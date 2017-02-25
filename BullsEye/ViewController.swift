@@ -8,6 +8,7 @@
 
 import UIKit
 import GameplayKit
+import QuartzCore
 
 class ViewController: UIViewController {
 
@@ -35,9 +36,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func hitButton(_ sender: Any) {
-        let currentSliderNumber = slider.value
-        let difference = abs(currentSliderNumber - Float(guess))
+        let currentSliderNumber = lroundf(slider.value)
+        let difference = abs(currentSliderNumber - guess)
         switch difference {
+        case 0:
+            score += 500
         case let x where x <= 10:
             score += 100
         case 11...50:
@@ -60,20 +63,26 @@ class ViewController: UIViewController {
         round = 1
         score = 0
         createGuessNumber()
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        view.layer.add(transition, forKey: nil)
     }
     
-    @IBAction func infoButton(_ sender: Any) {
-        let alert = UIAlertController(title: "How to play", message: "Move the slider to get as close as you can to the suggested number.", preferredStyle: .alert)
-        present(alert, animated: true)
-    }
+//    @IBAction func infoButton(_ sender: Any) {
+//        let alert = UIAlertController(title: "How to play", message: "Move the slider to get as close as you can to the suggested number.", preferredStyle: .alert)
+//        present(alert, animated: true)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         slider.setThumbImage(UIImage(named: "SliderThumb-Normal"), for: .normal)
         slider.setThumbImage(UIImage(named: "SliderThumb-Highlighted"), for: .highlighted)
-        slider.setMinimumTrackImage(UIImage(named: "SliderTrackLeft"), for: .normal)
-        slider.setMaximumTrackImage(UIImage(named: "SliderTrackRight"), for: .normal)
+        let insets = UIEdgeInsetsMake(0, 14, 0, 14)
+        slider.setMinimumTrackImage(UIImage(named: "SliderTrackLeft")?.resizableImage(withCapInsets: insets), for: .normal)
+        slider.setMaximumTrackImage(UIImage(named: "SliderTrackRight")?.resizableImage(withCapInsets: insets), for: .normal)
         createGuessNumber()
         score = 0
         round = 1
