@@ -1,26 +1,117 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BullsEye" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.png" translatesAutoresizingMaskIntoConstraints="NO" id="g2m-K4-n35">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="hxD-fD-HCS">
+                                <rect key="frame" x="18" y="38" width="657" height="298"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the bull's eye as close as you can to:    " textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ze-CQ-Lf5">
+                                        <rect key="frame" x="166" y="0.0" width="326" height="37"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="T4D-4y-KLM">
+                                        <rect key="frame" x="-2" y="87" width="661" height="38"/>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="857-wh-8qK">
+                                        <rect key="frame" x="279" y="174" width="100" height="37"/>
+                                        <state key="normal" title="Hit Me!" backgroundImage="Button-Normal.png">
+                                            <color key="titleColor" red="0.0070433937823833892" green="0.0070433937823833892" blue="0.0070433937823833892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="hitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pYf-VP-WbH"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="soj-P8-vKP">
+                                        <rect key="frame" x="46" y="261" width="565" height="37"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7U-12-8y3">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="37"/>
+                                                <state key="normal" image="StartOverIcon.png" backgroundImage="SmallButton.png"/>
+                                                <connections>
+                                                    <action selector="replayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tWi-rP-B71"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQT-VG-czg">
+                                                <rect key="frame" x="156" y="0.0" width="64" height="37"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round: 1" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWX-i4-ti5">
+                                                <rect key="frame" x="343" y="0.0" width="66" height="37"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jru-kD-57G">
+                                                <rect key="frame" x="533" y="0.0" width="32" height="37"/>
+                                                <state key="normal" image="InfoButton.png" backgroundImage="SmallButton.png"/>
+                                                <connections>
+                                                    <action selector="infoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="98u-Fl-rPo"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="T4D-4y-KLM" firstAttribute="leading" secondItem="hxD-fD-HCS" secondAttribute="leading" id="CGe-Se-suh"/>
+                                    <constraint firstItem="soj-P8-vKP" firstAttribute="leading" secondItem="hxD-fD-HCS" secondAttribute="leading" constant="46" id="fil-mZ-Tjm"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g2m-K4-n35" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6xk-cF-qb9"/>
+                            <constraint firstItem="g2m-K4-n35" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9ds-h5-Ori"/>
+                            <constraint firstItem="g2m-K4-n35" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="FIH-UI-A6m"/>
+                            <constraint firstItem="g2m-K4-n35" firstAttribute="centerY" secondItem="hxD-fD-HCS" secondAttribute="centerY" id="HwC-ya-2V6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hxD-fD-HCS" secondAttribute="trailing" constant="-28" id="kwE-o4-NzI"/>
+                            <constraint firstItem="hxD-fD-HCS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-2" id="lSM-yz-n7x"/>
+                            <constraint firstAttribute="trailing" secondItem="g2m-K4-n35" secondAttribute="trailing" id="top-P7-OHC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="guessLabel" destination="1ze-CQ-Lf5" id="FhW-wV-Hng"/>
+                        <outlet property="roundLabel" destination="iWX-i4-ti5" id="cra-nt-8n8"/>
+                        <outlet property="scoreLabel" destination="HQT-VG-czg" id="tmg-m7-uKd"/>
+                        <outlet property="slider" destination="T4D-4y-KLM" id="WBe-x1-Sul"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.18140929535232" y="138.40000000000001"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background.png" width="568" height="320"/>
+        <image name="Button-Normal.png" width="100" height="37"/>
+        <image name="InfoButton.png" width="10" height="22"/>
+        <image name="SmallButton.png" width="32" height="32"/>
+        <image name="StartOverIcon.png" width="20" height="20"/>
+    </resources>
 </document>
